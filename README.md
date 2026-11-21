@@ -1,16 +1,18 @@
 <div align="center">
 
-<img src="src/YueduPC/Assets/logo512.png" width="128" alt="轻阅读"/>
+<img src="docs/logo.png" width="128" alt="轻阅读"/>
 
 # 轻阅读 QingYueDu
 
 **基于 WinUI 3 的现代化 Windows 桌面小说阅读器**
 
-支持 TXT / EPUB · 上下滚动 / 双栏 / 仿真 / 覆盖四种翻页方式 · 划词批注 · 自动翻页 · 本地优先
+支持 TXT / EPUB · 上下滚动 / 双栏 / 仿真 / 覆盖四种翻页方式 · 划词批注 · 自动翻页 · TTS 听书 · 全文搜索 · Legado 书源 · 本地优先
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%20%2F%2011-lightgrey)]()
 [![.NET](https://img.shields.io/badge/.NET-8.0-blueviolet)]()
+
+**[🐙 GitHub](https://github.com/ligit520/QingYueDu)**
 
 </div>
 
@@ -41,23 +43,41 @@
 - 书籍详情页：元数据、完整目录跳转、继续阅读
 - 进度实时持久化，重开自动定位
 
-### 🔊 更多
-- 自动翻页（可调速度浮层，滚动模式匀速滑读，分页模式定时翻页）
-- TTS 听书、Legado 书源等规划中（见 [路线图](#-路线图)）
+### 🔊 听书与搜索
+- **TTS 听书**：调用 Windows 系统语音，按句朗读，支持音色选择、朗读高亮、上一句 / 下一句跳转
+- **全文搜索**：跨全书章节搜索，关键词高亮定位，点击结果直达命中处
+
+### 🌐 在线书源（Legado 规则引擎）
+- **内置书源**：内置多条笔趣阁等常用书源，开箱即用
+- **书源管理**：URL / 文件 / 剪贴板三种导入方式，列表化管理，一键启用 / 停用 / 删除，支持多选全开 / 全关
+- **可用性检测**：启动时自动检测已启用书源，导入后即时检测，也可在书源管理页手动检测，结果一目了然
+- **书城**：跨已启用书源搜索书籍，点击直接在线阅读
 
 ## 📸 截图
 
 | 书架 | 阅读器 |
 | --- | --- |
-| ![书架](docs/screenshots/bookshelf.png) | ![TXT 阅读器](docs/screenshots/txt-reader.png) |
+| ![书架](docs/screenshots/bookshelf.png) | ![阅读器](docs/screenshots/reader.png) |
 
-| EPUB | 排版自定义 |
+| 排版自定义 | 全文搜索 |
 | --- | --- |
-| ![EPUB 阅读器](docs/screenshots/epub-reader.png) | ![排版](docs/screenshots/typography.png) |
+| ![排版](docs/screenshots/typography.png) | ![搜索](docs/screenshots/search.png) |
+
+| 目录面板 | TTS 听书 |
+| --- | --- |
+| ![目录](docs/screenshots/toc.png) | ![TTS](docs/screenshots/tts.png) |
+
+| 书城 | 书源管理 |
+| --- | --- |
+| ![书城](docs/screenshots/bookstore.png) | ![书源管理](docs/screenshots/sources.png) |
+
+| 设置 |
+| --- |
+| ![设置](docs/screenshots/settings.png) |
 
 ## 📥 下载安装
 
-前往 [**Releases**](../../releases) 页面下载 `QingYueDu-vX.X.X-win-x64.zip`，解压后运行 `QingYueDu.exe` 即可。
+前往 [**Releases**](https://github.com/ligit520/QingYueDu/releases) 页面下载 `QingYueDu-vX.X.X-win-x64.zip`，解压后运行 `QingYueDu.exe` 即可。
 
 > 无需安装 .NET，压缩包已自包含全部运行时。
 > 系统要求：Windows 10 (17763+) 或 Windows 11 x64；EPUB 渲染依赖 WebView2（Win11 自带）。
@@ -71,14 +91,12 @@
 | TXT 解析 | Ude.NetStandard 编码探测 + 正则章节切分 |
 | EPUB 解析 | 自研 ZipArchive + OPF 解析器（零第三方依赖） |
 | 渲染 | WebView2 统一渲染管线（TXT / EPUB 共用） |
+| 书源引擎 | 自研 Legado 规则引擎（CSS 选择器 / XPath 子集） |
 | 数据 | 本地 JSON（书库 / 进度 / 书签 / 批注 / 设置），不上传任何服务器 |
 | 部署 | Unpackaged + 自包含运行时，解压即用 |
 
 ## 🗺 路线图
 
-- [ ] TTS 听书（Windows 系统语音）
-- [ ] 全文搜索
-- [ ] Legado 书源（网文在线阅读）
 - [ ] PDF 支持
 - [ ] AI 助手（OpenAI / Claude / Gemini）
 
